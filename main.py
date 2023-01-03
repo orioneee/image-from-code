@@ -24,7 +24,7 @@ import datetime
 # Get the current date and time
 now = datetime.datetime.now()
 # Use the datetime.strftime method to specify the format of the date and time
-date_time = now.strftime("Time %H-%M-%S Date %d-%m-%y ")
+date_time = now.strftime("Time %H-%M-%S Date %d-%m-%y")
 toaster = ToastNotifier()
 COLORSV = ''
 BACKGROUND = "true"
@@ -37,13 +37,13 @@ CODE=''
 # Create the root windo
 url=''
 def get_img():
-    url = f"https://ray.so/?colors={COLORSV}&background={BACKGROUND}&darkMode={DARK_MODE}&padding={PADDING}&title={TITLEV}&code={CODE}&language={LANGUAGEV}"
-    #webbrowser.open(url)
-    try:
+        url = f"https://ray.so/?colors={COLORSV}&background={BACKGROUND}&darkMode={DARK_MODE}&padding={PADDING}&title={TITLEV}&code={CODE}&language={LANGUAGEV}"
+        #webbrowser.open(url)
         from selenium import webdriver
-
+        if not os.path.exists:
+            os.mkdir("img")
         edge_options = webdriver.EdgeOptions()
-        edge_options.add_experimental_option("prefs", {"download.default_directory": "D:\\ВНТУ\\Requests\\img"})
+        edge_options.add_experimental_option("prefs", {"download.default_directory": os.getcwd() + "\\img"})
         #edge_options.add_argument("--headless")
         driver = webdriver.Edge(options=edge_options)
         driver.get(url)
@@ -51,7 +51,7 @@ def get_img():
         WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, button_export)))
         driver.find_element(By.XPATH, button_export).click()
         time.sleep(2)
-        os.chdir("D:\\ВНТУ\\Requests\\img")
+        os.chdir(os.getcwd() + "\\img")
         from io import BytesIO
         import win32clipboard
         from PIL import Image
@@ -62,7 +62,7 @@ def get_img():
             win32clipboard.SetClipboardData(clip_type, data)
             win32clipboard.CloseClipboard()
 
-        filepath = f'{TITLEV}.png'
+        filepath = os.getcwd()  + f'\\{TITLEV}.png'
         image = Image.open(filepath)
 
         output = BytesIO()
@@ -73,10 +73,7 @@ def get_img():
         send_to_clipboard(win32clipboard.CF_DIB, data)
         
         toaster.show_toast("Succses","Your image has been copied!")
-        filepath = 'D:\\ВНТУ\\Requests\\img\\' + filepath
-    except Exception as e:
-        toaster.show_toast("Error","Opos somthing went wrong...\n" + e)
-        print(e)
+        filepath = os.getcwd() + filepath
     #webbrowser.open(url)
 def brow():
     global file_path
