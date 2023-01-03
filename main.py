@@ -24,12 +24,12 @@ import datetime
 # Get the current date and time
 now = datetime.datetime.now()
 # Use the datetime.strftime method to specify the format of the date and time
-date_time = now.strftime("Date %d-%m-%y Time %H-%M-%S")
+date_time = now.strftime("Time %H-%M-%S Date %d-%m-%y ")
 toaster = ToastNotifier()
 COLORSV = ''
 BACKGROUND = "true"
 DARK_MODE = "true"
-PADDING = "64"
+PADDING = "128"
 LANGUAGEV = ''
 #TITLE = str(int(time.time())) + "(" + file_path[file_path.rfind('\\')+1:file_path.find('.')] + ")"
 TITLEV=date_time
@@ -115,8 +115,9 @@ def prints():
     root.destroy()
     get_img()
 root = tk.Tk()
-root.title("Choose option")
+root.title("Ray.so Image Generator")
 root.geometry("650x50")
+root.iconbitmap("icom.ico")
 # Create the choose box for language
 languages = ["auto", "cpp", "python", "js", "html", "js", "html"]
 language_var = tk.StringVar(root)
