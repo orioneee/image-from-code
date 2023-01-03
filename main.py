@@ -62,6 +62,7 @@ def get_img():
             win32clipboard.SetClipboardData(clip_type, data)
             win32clipboard.CloseClipboard()
 
+        time.sleep(0.5)
         filepath = os.getcwd()  + f'\\{TITLEV}.png'
         image = Image.open(filepath)
 
@@ -154,4 +155,3 @@ with open(file_path, 'r') as f:
     contents = f.read()
 
 #print(url)
-
