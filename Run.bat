@@ -1,1 +1,1 @@
-py main_upd.py
+py main.py
