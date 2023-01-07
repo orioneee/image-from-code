@@ -4,4 +4,4 @@ After generating image will be aviable in clipboard and in folder "/img" near to
 
 # Install and run
 pip install -r requirements.txt  
-python main.py
+run exe which you need
