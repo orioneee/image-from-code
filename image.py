@@ -124,7 +124,7 @@ if len(sys.argv)>1:
     LANGUAGEV=sys.argv[1]
     COLORSV=sys.argv[2]
     file_path=sys.argv[3]
-    with open(file_path, 'r') as f:
+    with open(sys.argv[4] + "\\" + file_path, 'r') as f:
         contents=f.read()
 
     CODE = base64.b64encode(contents.encode("utf-8")).decode("utf-8")

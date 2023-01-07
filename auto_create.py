@@ -1,12 +1,20 @@
 import os
 from colorama import Fore, Style, init, Back, init
+import tkinter as tk
+from tkinter import filedialog
 init()
+folder_path=''
 files=[]
 ext = ""
 color = ""
 lang = ""
+mp=os.getcwd()
 def inpt():
-    global ext, color, lang, files
+    global ext, color, lang, files, folder_path
+    root = tk.Tk()
+    root.withdraw()
+    folder_path = filedialog.askdirectory()
+    os.chdir(folder_path)
     files.clear()
     ext = input("Enter a file type(.js/.cpp): ")
     color = input("Enter a color: ")
@@ -23,6 +31,7 @@ while cor!='y':
     for fileName in files:
         print(fileName)
     cor=input("\nIs it correct?(y/n): ")
+os.chdir(mp)
 for i in range(0,len(files)):
-    os.system(f"py image.py {lang} {color} {files[i]}")
+    os.system(f"py image.py {lang} {color} {files[i]} {folder_path}")
     print(Fore.GREEN + f"{i+1}/{len(files)}({files[i]})" + Style.RESET_ALL)
