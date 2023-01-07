@@ -30,6 +30,10 @@ while cor!='y':
     print("Aviable files: \n")
     for fileName in files:
         print(fileName)
+    print("\nCustomization: ")
+    print(f"Extention: {ext}")
+    print(f"Color: {color}")
+    print(f"Language: {lang}")
     cor=input("\nIs it correct?(y/n): ")
 os.chdir(mp)
 for i in range(0,len(files)):
